@@ -8,12 +8,20 @@
 </head>
 
 <body>
-    <h1>Mon blog Laravel</h1>
-    <p>
-        <a href="/contact-us">Contactez-nous</a>
-    </p>
+    <header>
+        <h1>Mon blog Laravel</h1>
+        <nav>
+            <ul>
+                <li><a href="/contact-us">Contactez-nous</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+    </header>
     <!-- Le contenu de toutes les pages apparaîtra en bas ici -->
-    @yield('contenu')
+    <main>
+        <!-- @yield('contenu') -->
+        <!-- @yield('about') -->
+    </main>
     <!-- Le contenu de toutes les pages apparaîtra en bas ici -->
 </body>
 
