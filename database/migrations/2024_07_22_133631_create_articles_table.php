@@ -17,13 +17,13 @@ return new class extends Migration {
             $table->string('image');
             // constrained veut englober les lignes de nullable
             // et la dernière ligne de la création du tableau
-            $table->foreignId('user_id')->constrained()->nullable();
-            // $table->foreignId('user_id')->nullable();
+            // $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->nullable();
             $table->timestamps();
-            // $table->foreign('user_id')
-            //     ->references('id')
-            //     ->on('users')
-            //     ->onDelete('SET NULL');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('SET NULL');
         });
     }
 

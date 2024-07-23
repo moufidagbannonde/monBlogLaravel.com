@@ -32,7 +32,14 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-
+    // un utilisateur a plusieurs articles 
+    public function articles(){
+        return $this->hasMany(Article::class);
+    }
+    // un utilisateur a plusieurs commentaires
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
     /**
      * The attributes that should be cast.
      *
