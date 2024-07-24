@@ -39,9 +39,18 @@ Créer un article
             {{$message}}
         </div>
     @enderror
+    {{-- <div class="form-group mb-3">
+        <label for="auteur">Auteur</label>
+        <input type="text" class="form-control @error('auteur') is-invalid @enderror" id="auteur" name="auteur">
+    </div>
+    @error('auteur')
+        <div class="invalid-feedback">
+            {{$message}}
+        </div> 
+     @enderror --}}
     <div class="form-group mb-3">
         <label for="image">Ajouter une image</label>
-        <input type="file" class="form-control @error('body') is-invalid @enderror" id="img" name="image">
+        <input type="file" class="form-control @error('image') is-invalid @enderror" id="img" name="image">
     </div>
     @error('image')
         <div class="invalid-feedback">

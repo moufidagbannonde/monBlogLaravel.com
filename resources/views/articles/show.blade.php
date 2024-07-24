@@ -4,9 +4,13 @@
 </div> -->
 @section('contenu')
 <article class="card mb-3">
-    <img src="{{$article["image"]}}" alt="" class="card-img-toc">
+
+    @if ($article->image)
+        <img src="{{ asset('storage/' . $article->image)}}" alt="" class="card-img-toc">
+    @endif
+
     <div class="card-body">
-        <h1><u>Article {{$article["id"]}} </u>du {{$article["created_at"]}} créé par {{$article->user->name}}</h1>
+        <h1><u>Article {{$article["id"]}} </u>du {{$article["created_at"]}} rédigé par {{$article->user->name}} </h1>
         <h2 class="card-title mb-3 mt-3">
             <i>{{ $article["title"] }}</i>
         </h2>

@@ -23,8 +23,9 @@ class StoreArticleRequest extends FormRequest
     {
         return [
            "title"=>"required|string",
-           "body" =>"required|string|max:255",
-           "image"=>"nullable|image|mimes:jpeg,png,gif|max:2048"
+           "body" =>"required|string",
+           "image"=>"nullable|image|mimes:jpeg,png,gif|max:2048",
+        //    "auteur" => "required|string"
         ];
     }
 }

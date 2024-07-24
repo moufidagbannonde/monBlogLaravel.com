@@ -16,7 +16,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::all();
+        $articles = Article::latest()->paginate(5);
         return view(
             'layouts.articles',
             ['articles' => $articles]
@@ -42,14 +42,16 @@ class ArticleController extends Controller
         // récupère les données validées
         // Gérer la sauvegarde de l'image (s'il y en a )
         if ($request->hasFile("image")) {
-            $path = $request->file('image')->store('images');
+            $path = $request->file('image')
+                ->store('image', 'public');
             $validated['image'] = $path;
         }
+        $validated['user_id'] = 1;
 
         // Sinon envoi de l'article dans la base de données
         Article::create($validated);
         // retourne   sur la page des articles
-        return redirect('/articles')->with('success', 'article créé avec succès');
+        return redirect('/articles')->with('success', 'Article créé avec succès');
 
     }
 
