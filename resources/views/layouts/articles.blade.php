@@ -6,11 +6,9 @@ Articles
 
 @section('contenu')
 <h1>Articles</h1>
-@if (session('success'))
-    <div class="alert alert-success">{{session('success')}}</div>
-@endif
+
 <p>
-    <a href="/article/create" class="btn btn-primary">
+    <a href="/articles/create" class="btn btn-primary">
         Créer un article
     </a>
 </p>

@@ -37,9 +37,16 @@
     </header>
     <!-- Le contenu de toutes les pages apparaîtra en bas ici -->
     <main class="container mt-4">
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{session('success')}}
+            </div>
+        @endif
+        {{-- Contenu de tous les pages ici --}}
         @yield('contenu')
         @yield('content')
         @yield('about')
+        {{-- Contenu de toutes les pages ici --}}
     </main>
     {{-- Le contenu de toutes les pages apparaîtra en bas ici --}}
 

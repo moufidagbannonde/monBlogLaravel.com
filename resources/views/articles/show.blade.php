@@ -1,46 +1,58 @@
 @extends('layouts.master')
-<!-- <div>
-    The biggest battle is the war against ignorance. - Mustafa Kemal Atatürk
-</div> -->
+
 @section('contenu')
-<article class="card mb-3">
+    
+<article class="mb-5">
 
     @if ($article->image)
-        <img src="{{ asset('storage/' . $article->image)}}" alt="" class="card-img-toc">
+        <img src="{{ asset('storage/' . $article->image) }}" alt="" class="card-img-top">
     @endif
-
+    
     <div class="card-body">
-        <h1><u>Article {{$article["id"]}} </u>du {{$article["created_at"]}} rédigé par {{$article->user->name}} </h1>
         <h2 class="card-title mb-3 mt-3">
-            <i>{{ $article["title"] }}</i>
+            {{ $article->title }}
+            <a class="btn btn-sm btn-warning ml-3" href="/articles/{{ $article->id }}/edit">Editer</a>
+            <form action="{{ route('articles.destroy', $article->id) }}" method="post">
+                @csrf
+                @method('DELETE')
+                <button class="btn btn-danger" type="submit">Supprimer</button>
+            </form>
         </h2>
-        <p class="card-text">{{ $article["body"] }}</p>
+    <p>Créé par <strong>{{ $article->user->name }}</strong> le {{$article->created_at->format('j F Y')}}</p>
+        
+        <p class="card-text">{{ $article->body }}</p>
     </div>
 </article>
-<section class=" mb-5">
-    <div class="form-floating">
 
+<section class="mb-5">
+    <div class="form-floating">
         <h2>
             <label for="comment-input">Commentaires</label>
         </h2>
         <form action="">
-            <textarea name="comment" id="comment-input" class="form-control" placeholder="Commentez cet article">
-            </textarea>
-            <button type="submit" class="mt-3 btn btn-primary">Envoyer</button>
-            <p>{{ $article["name"]}}</p>
+            <textarea 
+            name="comment" 
+            id="comment-input"
+            class="form-control"
+            placeholder="Laissez votre commentaire ici"
+            ></textarea>
+            <button type="submit" class="btn btn-primary">
+                Envoyer
+            </button>
         </form>
-        <div>
+
+        <div class="mt-5">
             @forelse($article->comments as $comment)
-                <div class="mt-2">
-                    <small class="mt-1">{{$comment["comment"]}}</small>
+                <div class="mb-3">
                     <p>
-                         <span class="badge text-primary">
-                            {{$comment->user->name}}
+                        <span class="badge text-primary">
+                           {{ $comment->user->name}}
                         </span>
                         <span class="badge text-bg-secondary">
-                           commented  <i>{{ $comment->created_at->diffForHumans()  }}</i>
+                            {{ $comment->created_at->diffForHumans() }}
                         </span>
                     </p>
+                    <small>{{ $comment["comment"] }}</small>
                 </div>
             @empty
                 <p>Aucun commentaire trouvé</p>
