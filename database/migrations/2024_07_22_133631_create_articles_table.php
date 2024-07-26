@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->string('title');
             $table->text('body');
+            $table->string('author');
             $table->string('image');
             // constrained veut englober les lignes de nullable
             // et la dernière ligne de la création du tableau

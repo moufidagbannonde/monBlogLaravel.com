@@ -4,7 +4,7 @@ Créer un article
 @endsection
 @section('contenu')
 
-<h2>
+<h2 class="card ">
     Be present above all else. -Naval Ravikant
 </h2><br>
 <form action="{{ route('articles.update', $article->id) }}" method="POST" enctype="multipart/form-data">
@@ -40,7 +40,16 @@ Créer un article
             {{$message}}
         </div>
     @enderror
-
+    {{--<div class="form-group mb-3">
+        <label for="title">Nouvel auteur:</label>
+        <input type="text" class="form-control @error('author') is-invalid @enderror" id="author"
+            placeholder="Entrez le nouvel auteur" name="author" value="{{old('author', $article->author)}}">
+    </div>
+    @error('author')
+        <div class="invalid-feedback">
+            {{$message}}
+        </div>
+    @enderror--}}
     <div class="form-group mb-3">
         <label for="image">Ajouter une nouvelle image</label>
         @if ($article->image)

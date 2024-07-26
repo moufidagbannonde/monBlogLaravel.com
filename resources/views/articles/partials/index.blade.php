@@ -1,5 +1,5 @@
 <article class="card mb-3">
-    <!-- <p>{{$article["id"]}}</p> -->
+    {{-- <p>{{$article["id"]}}</p> --}}
     <img src="{{ asset('storage/' . $article->image)}}" alt="" class="card-img-toc">
     <div class="card-body">
         <h2 class="card-title">

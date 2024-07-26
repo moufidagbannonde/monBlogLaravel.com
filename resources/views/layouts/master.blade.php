@@ -30,6 +30,17 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/articles">Articles</a>
                         </li>
+                        @guest
+                            <a href="{{ route('register') }}" style="text-decoration:none">Créer un compte</a>
+                            <a href="{{ route('login') }}" style="text-decoration:none">Login</a>
+                        @endguest
+
+                        @auth
+                            <a href="{{ route('profile') }}">Mon profil</a>
+                            <h6>                            
+                                {{Auth::user()->name}}(connecté) 
+                            </h6>
+                        @endauth
                     </ul>
                 </div>
             </div>

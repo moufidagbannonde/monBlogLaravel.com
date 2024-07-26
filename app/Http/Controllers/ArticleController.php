@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
@@ -12,13 +13,17 @@ use App\Http\Requests\UpdateArticleRequest;
 // ICSSEUD
 class ArticleController extends Controller
 {
+    public function __construct(){
+        $this->middleware("auth")->except('index', 'show');
+    }
     /**
      * Display a listing of the resource.
      * Affiche toutes les articles
      */
     public function index()
     {
-        $articles = Article::latest()->paginate(5);
+        Auth::user()->name;
+        $articles = Article::latest()->paginate(1);
         return view(
             'layouts.articles',
             ['articles' => $articles]
@@ -48,7 +53,7 @@ class ArticleController extends Controller
                 ->store('image', 'public');
             $validated['image'] = $path;
         }
-        $validated['user_id'] = 1;
+        // $validated['user_id'] = 1;
 
         // Sinon envoi de l'article dans la base de données
         Article::create($validated);

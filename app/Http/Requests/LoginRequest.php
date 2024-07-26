@@ -3,8 +3,10 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Password;
 
-class StoreArticleRequest extends FormRequest
+
+class LoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,11 +24,19 @@ class StoreArticleRequest extends FormRequest
     public function rules(): array
     {
         return [
-           "title"=>"required|string",
-           "body" =>"required|string",
-           "author" =>"required|string",
-           "image"=>"nullable|image|mimes:jpeg,png,gif|max:2048",
-            // "auteur" => "required|string"
+            'email' => [
+                "required",
+                "string",
+                "lowercase",
+                "email",
+                "max:255",
+                "unique:users"
+            ],
+            'password' => [
+                "required",
+                "confirmed",
+                Password::default()
+                ]
         ];
     }
 }
