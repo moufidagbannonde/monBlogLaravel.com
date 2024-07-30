@@ -48,7 +48,7 @@ Créer un article
             @enderror
         </div>
     </div>
-    {{--<div class="form-group mb-3">
+<div class="form-group mb-3">
         <label for="image">Ajouter une image</label>
         <input type="file" class="form-control @error('image') is-invalid @enderror" id="img" name="image">
     </div>
@@ -56,7 +56,7 @@ Créer un article
         <div class="invalid-feedback">
             {{$message}}
         </div>
-    @enderror--}}
+    @enderror
     <button type="submit" class="btn btn-primary">Ajouter mon article</button>
 </form>
 @endsection

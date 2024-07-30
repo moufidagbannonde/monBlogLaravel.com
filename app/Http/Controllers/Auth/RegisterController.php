@@ -14,7 +14,7 @@ class RegisterController extends Controller
     public function index()
     {
         // retour de la vue du formulaire d'inscription 
-        //  se toruvant dans le fichier register.blade.php dans le dossier auth
+        //  se trouvant dans le fichier register.blade.php dans le dossier auth
         return view("auth.register");
     }
     // protected function validator(array $data)
@@ -29,7 +29,7 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      */
-    
+
     public function create(RegisterRequest $request)
     {
         // validation des informations d'inscription de l'utilisateur
